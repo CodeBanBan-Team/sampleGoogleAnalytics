@@ -2,7 +2,7 @@
 //  AppDelegate.h
 //  test
 //
-//  Created by Pollapee Sroysuwan on 1/16/56 BE.
+//  Created by Code BanBan on 1/16/56 BE.
 //  Copyright (c) 2556 Code BanBan. All rights reserved.
 //
 
