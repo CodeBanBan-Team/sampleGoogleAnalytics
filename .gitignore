@@ -1,4 +1,5 @@
 # project files
+xcodeproj/
 *.xcodeproj
 
 # specific files
