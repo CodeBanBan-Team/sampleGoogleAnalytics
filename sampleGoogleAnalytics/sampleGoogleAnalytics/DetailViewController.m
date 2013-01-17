@@ -41,7 +41,7 @@
 	[button addTarget:self action:@selector(buttonDidTouch) forControlEvents:UIControlEventTouchUpInside];
 	[self.view addSubview:button];
 	
-	[[GANTracker sharedTracker] trackPageview:@"/DetailView" withError:nil];
+	//[[GANTracker sharedTracker] trackPageview:@"/DetailView" withError:nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,11 +52,13 @@
 
 - (void)buttonDidTouch
 {
+	/*
 	[[GANTracker sharedTracker] trackEvent:@"button did touch"
 									action:@"close page"
 									 label:@"Close"
 									 value:1
 								 withError:nil];
+	*/
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
