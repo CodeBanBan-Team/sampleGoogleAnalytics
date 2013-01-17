@@ -22,9 +22,27 @@ static const NSInteger kDispatchPeriodSeconds = 10;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    [self.window makeKeyAndVisible];
+	
+	// add root viewcontoller
+    MenuViewController* viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    self.window.rootViewController = viewController;
+    
+    
+    // init testflight
+    [TestFlight takeOff:@"d99b7c7d88b810fd71d165aaf1461077_MTc1MzEwMjAxMy0wMS0xNiAyMTozMTozNS44ODQzNzc"];
+    
+    [TestFlight passCheckpoint:@"application did finish launching"];
+	
+	
+	//==== Google analytics ===//
+	///*
 	[[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
 										   dispatchPeriod:kDispatchPeriodSeconds
-												 delegate:self];
+												 delegate:nil];
 	
 	NSError *error;
 	if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
@@ -49,23 +67,7 @@ static const NSInteger kDispatchPeriodSeconds = 10;
 	{
 		NSLog(@"Error : trackPageview");
 	}
-	
-	
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
-    [self.window makeKeyAndVisible];
-    
-    
-    // init testflight
-    [TestFlight takeOff:@"d99b7c7d88b810fd71d165aaf1461077_MTc1MzEwMjAxMy0wMS0xNiAyMTozMTozNS44ODQzNzc"];
-    
-    [TestFlight passCheckpoint:@"application did finish launching"];
-    
-    // add root viewcontoller
-    MenuViewController* viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
-    self.window.rootViewController = viewController;
-    
+    //*/
     
     return YES;
 }

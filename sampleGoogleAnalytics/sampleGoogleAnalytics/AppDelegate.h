@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-#import "GANTracker.h"
-
 @interface AppDelegate : UIResponder <UIApplicationDelegate, GANTrackerDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
