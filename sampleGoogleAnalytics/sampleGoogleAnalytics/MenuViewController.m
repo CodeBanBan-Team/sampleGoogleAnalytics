@@ -8,6 +8,8 @@
 
 #import "MenuViewController.h"
 
+#import "DetailViewController.h"
+
 @interface MenuViewController ()
 
 @end
@@ -64,13 +66,23 @@
 		value = 2;
 		
 		[[GANTracker sharedTracker] trackTransactions:nil];
+		[[GANTracker sharedTracker] trackEvent:@"button did touch"
+										action:@"open detail view"
+										 label:label
+										 value:value
+									 withError:nil];
+		
+		DetailViewController *con = [[[DetailViewController alloc] init] autorelease];
+		[self presentViewController:con animated:YES completion:nil];
 	}
-	
-	[[GANTracker sharedTracker] trackEvent:@"button did touch"
-									action:@"button click"
-									 label:label
-									 value:value
-								 withError:nil];
+	else
+	{
+		[[GANTracker sharedTracker] trackEvent:@"button did touch"
+										action:@"button click"
+										 label:label
+										 value:value
+									 withError:nil];
+	}
 }
 
 @end
