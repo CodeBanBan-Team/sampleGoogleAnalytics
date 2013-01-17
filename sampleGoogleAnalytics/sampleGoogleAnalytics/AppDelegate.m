@@ -9,6 +9,9 @@
 #import "AppDelegate.h"
 #import "MenuViewController.h"
 
+static NSString *const kAnalyticsAccountId = @"UA-36016647-4";
+static const NSInteger kDispatchPeriodSeconds = 10;
+
 @implementation AppDelegate
 
 - (void)dealloc
@@ -19,6 +22,35 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+	[[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
+										   dispatchPeriod:kDispatchPeriodSeconds
+												 delegate:self];
+	
+	NSError *error;
+	if (![[GANTracker sharedTracker] setCustomVariableAtIndex:1
+														 name:@"iPhone1"
+														value:@"iv1"
+													withError:&error])
+	{
+		NSLog(@"Error : setCustomVariableAtIndex");
+	}
+	
+	if (![[GANTracker sharedTracker] trackEvent:@"my_category"
+										 action:@"my_action"
+										  label:@"my_label"
+										  value:-1
+									  withError:&error])
+	{
+		NSLog(@"Error : trackEvent");
+	}
+	
+	if (![[GANTracker sharedTracker] trackPageview:@"/app_entry_point"
+										 withError:&error])
+	{
+		NSLog(@"Error : trackPageview");
+	}
+	
+	
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
@@ -65,6 +97,20 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+
+#pragma mark -
+#pragma mark GANTrackerDelegate methods
+
+- (void)hitDispatched:(NSString *)hitString {
+	NSLog(@"Hit Dispatched: %@", hitString);
+}
+
+- (void)trackerDispatchDidComplete:(GANTracker *)tracker
+                  eventsDispatched:(NSUInteger)hitsDispatched
+              eventsFailedDispatch:(NSUInteger)hitsFailedDispatch {
+	NSLog(@"Dispatch completed (%u OK, %u failed)",
+		  hitsDispatched, hitsFailedDispatch);
+}
 
 
 @end
