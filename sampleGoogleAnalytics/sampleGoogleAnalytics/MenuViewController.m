@@ -33,7 +33,7 @@
     [TestFlight passCheckpoint:@"Testflight menu viewcontroller did load."];
 	[TestFlight openFeedbackView];
 
-	[[GANTracker sharedTracker] trackPageview:@"/MenuView" withError:nil];
+//	[[GANTracker sharedTracker] trackPageview:@"/MenuView" withError:nil];
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	button.frame = CGRectMake(20, 50, 100, 40);

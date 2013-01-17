@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "MenuViewController.h"
+#import "GANTracker.h"
 
 static NSString *const kAnalyticsAccountId = @"UA-36016647-4";
 static const NSInteger kDispatchPeriodSeconds = 10;
@@ -31,7 +32,7 @@ static const NSInteger kDispatchPeriodSeconds = 10;
     MenuViewController* viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
     self.window.rootViewController = viewController;
     
-    
+    [TestFlight setDeviceIdentifier:@"11"];
     // init testflight
     [TestFlight takeOff:@"d99b7c7d88b810fd71d165aaf1461077_MTc1MzEwMjAxMy0wMS0xNiAyMTozMTozNS44ODQzNzc"];
     
