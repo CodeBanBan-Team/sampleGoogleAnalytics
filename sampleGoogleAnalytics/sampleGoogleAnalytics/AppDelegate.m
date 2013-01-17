@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "MenuViewController.h"
 
 @implementation AppDelegate
 
@@ -22,6 +23,18 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    
+    
+    // init testflight
+    [TestFlight takeOff:@"d99b7c7d88b810fd71d165aaf1461077_MTc1MzEwMjAxMy0wMS0xNiAyMTozMTozNS44ODQzNzc"];
+    
+    [TestFlight passCheckpoint:@"application did finish launching"];
+    
+    // add root viewcontoller
+    MenuViewController* viewController = [[MenuViewController alloc] initWithNibName:@"MenuViewController" bundle:nil];
+    self.window.rootViewController = viewController;
+    
+    
     return YES;
 }
 
