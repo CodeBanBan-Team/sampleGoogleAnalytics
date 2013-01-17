@@ -39,8 +39,17 @@ static const NSInteger kDispatchPeriodSeconds = 10;
     [TestFlight passCheckpoint:@"application did finish launching"];
 	
 	
+	// Optional: automatically send uncaught exceptions to Google Analytics.
+	[GAI sharedInstance].trackUncaughtExceptions = YES;
+	// Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+	[GAI sharedInstance].dispatchInterval = 20;
+	// Optional: set debug to YES for extra debugging information.
+	[GAI sharedInstance].debug = YES;
+	// Create tracker instance.
+	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
+	
 	//==== Google analytics ===//
-	///*
+	/*
 	[[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId
 										   dispatchPeriod:kDispatchPeriodSeconds
 												 delegate:nil];
@@ -104,6 +113,7 @@ static const NSInteger kDispatchPeriodSeconds = 10;
 #pragma mark -
 #pragma mark GANTrackerDelegate methods
 
+/*
 - (void)hitDispatched:(NSString *)hitString {
 	NSLog(@"Hit Dispatched: %@", hitString);
 }
@@ -114,6 +124,6 @@ static const NSInteger kDispatchPeriodSeconds = 10;
 	NSLog(@"Dispatch completed (%u OK, %u failed)",
 		  hitsDispatched, hitsFailedDispatch);
 }
-
+*/
 
 @end

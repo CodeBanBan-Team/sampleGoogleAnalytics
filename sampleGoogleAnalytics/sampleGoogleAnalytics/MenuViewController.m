@@ -33,6 +33,7 @@
     [TestFlight passCheckpoint:@"Testflight menu viewcontroller did load."];
 	[TestFlight openFeedbackView];
 
+
 //	[[GANTracker sharedTracker] trackPageview:@"/MenuView" withError:nil];
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -75,23 +76,27 @@
 		label = @"Button B";
 		value = 2;
 		
+		/*
 		[[GANTracker sharedTracker] trackTransactions:nil];
 		[[GANTracker sharedTracker] trackEvent:@"button did touch"
 										action:@"open detail view"
 										 label:label
 										 value:value
 									 withError:nil];
+		*/
 		
 		DetailViewController *con = [[[DetailViewController alloc] init] autorelease];
 		[self presentViewController:con animated:YES completion:nil];
 	}
 	else
 	{
+		/*
 		[[GANTracker sharedTracker] trackEvent:@"button did touch"
 										action:@"button click"
 										 label:label
 										 value:value
 									 withError:nil];
+		 */
 	}
 
 }
