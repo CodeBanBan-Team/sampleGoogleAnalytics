@@ -10,4 +10,6 @@
 
 @interface MenuViewController : UIViewController
 
+
+- (IBAction) crashButton:(id)sender;
 @end

@@ -26,6 +26,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view from its nib.
     [TestFlight passCheckpoint:@"Testflight menu viewcontroller did load."];
     
@@ -36,6 +37,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction) crashButton:(id)sender
+{
+    [TestFlight passCheckpoint:@"user touch on Crash Button"];
+    [self release];
+    [self release];
+    [self autorelease];
 }
 
 @end
