@@ -47,6 +47,9 @@ static const NSInteger kDispatchPeriodSeconds = 10;
 	// Create tracker instance.
 	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
 	
+	[tracker trackView:@"Start App000"];
+	[tracker sendView:@"Start App000 - send view"];
+	
 	//==== Google analytics ===//
 	/*
 	[[GANTracker sharedTracker] startTrackerWithAccountID:kAnalyticsAccountId

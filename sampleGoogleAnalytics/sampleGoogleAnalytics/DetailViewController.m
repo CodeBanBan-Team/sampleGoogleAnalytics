@@ -42,6 +42,8 @@
 	[self.view addSubview:button];
 	
 	//[[GANTracker sharedTracker] trackPageview:@"/DetailView" withError:nil];
+	
+	self.trackedViewName = @"Detail View";
 }
 
 - (void)didReceiveMemoryWarning
@@ -52,6 +54,8 @@
 
 - (void)buttonDidTouch
 {
+	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
+	[tracker sendEventWithCategory:@"Detail View" withAction:@"Button Close Click" withLabel:@"Button Close" withValue:@1];
 	/*
 	[[GANTracker sharedTracker] trackEvent:@"button did touch"
 									action:@"close page"

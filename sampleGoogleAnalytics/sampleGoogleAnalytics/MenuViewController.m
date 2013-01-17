@@ -33,6 +33,11 @@
 	[TestFlight openFeedbackView];
 
 	//[[GANTracker sharedTracker] trackPageview:@"/MenuView" withError:nil];
+	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
+	
+	[tracker trackView:@"Menu View"];
+	[tracker sendView:@"Menu View - send view"];
+	
 	
 	UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	button.frame = CGRectMake(20, 50, 100, 40);
@@ -65,6 +70,8 @@
 		label = @"Button B";
 		value = 2;
 		
+		id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
+		[tracker sendEventWithCategory:@"Menu View" withAction:@"Button 2 Click" withLabel:@"Button 2" withValue:@2];
 		/*
 		[[GANTracker sharedTracker] trackTransactions:nil];
 		[[GANTracker sharedTracker] trackEvent:@"button did touch"
@@ -79,6 +86,8 @@
 	}
 	else
 	{
+		id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-36016647-2"];
+		[tracker sendEventWithCategory:@"Menu View" withAction:@"Button 1 Click" withLabel:@"Button 1" withValue:@1];
 		/*
 		[[GANTracker sharedTracker] trackEvent:@"button did touch"
 										action:@"button click"
